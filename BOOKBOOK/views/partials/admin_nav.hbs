@@ -1,0 +1,47 @@
+<div id="user" style="display: none;">{{user.username}}</div>
+
+<div class="header position-fixed top-0 w-100">
+  <div class="header-container d-flex justify-content-between">
+    <div class="header-left col-3 d-flex justify-content-center">
+      <div class="left-logo">
+        <img src="./images/logo/logo1.png" alt="" />
+        <span>
+          <h5 class="fw-bold">BOOKBOOK</h5>
+        </span>
+      </div>
+    </div>
+
+    <div
+      class="header-right d-flex justify-content-center align-items-center gap-2"
+    >
+      <div class="right-user" data-bs-toggle="dropdown" aria-expanded="false">
+        <img src="avatar/{{user.avatar}}" alt="" />
+      </div>
+
+      <ul class="dropdown-menu">
+        <li>
+          <a class="dropdown-item disabled" href="#"><i
+              class="fa-solid fa-wrench fa-fw"
+            ></i>
+            Change password</a>
+        </li>
+        <li>
+          <hr class="dropdown-divider" />
+        </li>
+        <li>
+          <a class="dropdown-item" href="#" onclick="logOut()"><i
+              class="fa-solid fa-arrow-right-from-bracket fa-fw"
+            ></i>
+            Log out</a>
+        </li>
+
+        <form
+          style="display: none;"
+          method="post"
+          action="/logout"
+          id="logout-form"
+        ></form>
+      </ul>
+    </div>
+  </div>
+</div>

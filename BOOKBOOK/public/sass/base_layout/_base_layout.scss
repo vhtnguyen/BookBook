@@ -1,0 +1,28 @@
+.base-layout {
+   background-repeat: no-repeat;
+   background-color: rgba(244, 243, 244);
+   background-attachment: fixed;
+   &::after {
+      position: fixed;
+      z-index: 1;
+      content: '';
+      width: 150px;
+      height: 150px;
+      background-color: var(--light-orange);
+      bottom: 5%;
+      left: 0;
+      filter: blur(100px);
+   }
+   &::before {
+      position: fixed;
+      z-index: 1;
+      content: '';
+      width: 150px;
+      height: 150px;
+      background-color: var(--light-orange);
+      top: 10%;
+      right: 5%;
+      transform: translateY(-50%);
+      filter: blur(100px);
+   }
+}

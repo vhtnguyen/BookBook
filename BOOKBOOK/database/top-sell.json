@@ -1,0 +1,82 @@
+[
+  {
+    "rank": 1,
+    "title": "SAPIENS",
+    "author": "Yuval Noah Harari",
+    "book_image": "https://storage.googleapis.com/du-prd/books/images/9780062316097.jpg",
+    "amazon_product_url": "http://www.amazon.com/Sapiens-A-Brief-History-Humankind-ebook/dp/B00ICN066A?tag=NYTBSREV-20",
+    "authorAvatar": "https://covers.openlibrary.org/a/olid/OL3778242A-S.jpg"
+  },
+  {
+    "rank": 2,
+    "title": "THE BODY KEEPS THE SCORE",
+    "author": "Bessel van der Kolk",
+    "book_image": "https://storage.googleapis.com/du-prd/books/images/9780670785933.jpg",
+    "amazon_product_url": "http://www.amazon.com/The-Body-Keeps-Score-Healing/dp/0670785938?tag=NYTBSREV-20",
+    "authorAvatar": "https://covers.openlibrary.org/a/olid/OL2873756A-S.jpg"
+  },
+  {
+    "rank": 3,
+    "title": "BEING MORTAL",
+    "author": "Atul Gawande",
+    "book_image": "https://storage.googleapis.com/du-prd/books/images/9780805095159.jpg",
+    "amazon_product_url": "http://www.amazon.com/Being-Mortal-Medicine-What-Matters/dp/0805095152?tag=NYTBSREV-20",
+    "authorAvatar": "https://covers.openlibrary.org/a/olid/OL1485501A-S.jpg"
+  },
+  {
+    "rank": 4,
+    "title": "THINKING, FAST AND SLOW",
+    "author": "Daniel Kahneman",
+    "book_image": "https://storage.googleapis.com/du-prd/books/images/9781429969352.jpg",
+    "amazon_product_url": "http://www.amazon.com/Thinking-Fast-Slow-Daniel-Kahneman-ebook/dp/B00555X8OA?tag=NYTBSREV-20",
+    "authorAvatar": "https://covers.openlibrary.org/a/olid/OL2066695A-S.jpg"
+  },
+  {
+    "rank": 5,
+    "title": "THE MOSQUITO",
+    "author": "Timothy C Winegard",
+    "book_image": "https://storage.googleapis.com/du-prd/books/images/9781524743413.jpg",
+    "amazon_product_url": "https://www.amazon.com/Mosquito-Human-History-Deadliest-Predator/dp/1524743410?tag=NYTBSREV-20",
+    "authorAvatar": "https://covers.openlibrary.org/a/olid/OL7295021A-S.jpg"
+  },
+  {
+    "rank": 6,
+    "title": "THE IMMORTAL LIFE OF HENRIETTA LACKS",
+    "author": "Rebecca Skloot",
+    "book_image": "https://storage.googleapis.com/du-prd/books/images/9781400052189.jpg",
+    "amazon_product_url": "http://www.amazon.com/The-Immortal-Life-Henrietta-Lacks/dp/1400052181?tag=NYTBSREV-20",
+    "authorAvatar": "https://covers.openlibrary.org/a/olid/OL6720423A-S.jpg"
+  },
+  {
+    "rank": 7,
+    "title": "DOPESICK",
+    "author": "Beth Macy",
+    "book_image": "https://storage.googleapis.com/du-prd/books/images/9780316551243.jpg",
+    "amazon_product_url": "https://www.amazon.com/Dopesick-Dealers-Doctors-Company-Addicted/dp/0316551244?tag=NYTBSREV-20",
+    "authorAvatar": "https://covers.openlibrary.org/a/olid/OL7228000A-S.jpg"
+  },
+  {
+    "rank": 8,
+    "title": "WHY WE SLEEP",
+    "author": "Matthew Walker",
+    "book_image": "https://storage.googleapis.com/du-prd/books/images/9781501144318.jpg",
+    "amazon_product_url": "https://www.amazon.com/Why-We-Sleep-Unlocking-Dreams/dp/1501144316?tag=NYTBSREV-20",
+    "authorAvatar": "https://covers.openlibrary.org/a/olid/OL496837A-S.jpg"
+  },
+  {
+    "rank": 9,
+    "title": "21 LESSONS FOR THE 21ST CENTURY",
+    "author": "Yuval Noah Harari",
+    "book_image": "https://storage.googleapis.com/du-prd/books/images/9780525512172.jpg",
+    "amazon_product_url": "https://www.amazon.com/Lessons-21st-Century-Yuval-Harari/dp/0525512179?tag=NYTBSREV-20",
+    "authorAvatar": "https://covers.openlibrary.org/a/olid/OL3778242A-S.jpg"
+  },
+  {
+    "rank": 10,
+    "title": "QUIET",
+    "author": "Susan Cain",
+    "book_image": "https://storage.googleapis.com/du-prd/books/images/9780307452207.jpg",
+    "amazon_product_url": "http://www.amazon.com/Quiet-Power-Introverts-World-Talking-ebook/dp/B004J4WNL2?tag=NYTBSREV-20",
+    "authorAvatar": "https://covers.openlibrary.org/a/olid/OL7596856A-S.jpg"
+  }
+]

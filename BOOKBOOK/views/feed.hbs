@@ -1,0 +1,291 @@
+<link rel="stylesheet" href="./sass/css/styleFeed.css" />
+
+<div
+  class="base-layout position-relative d-flex justify-content-center w-100 h-100"
+>
+  <div class="content w-100 d-flex gap-0 h-auto pb-4 gap-3">
+    <div class="col-3 overflow-hidden pb-3 nav-container bg-light pt-4 px-2">
+      <div class="left-nav">
+        <ul
+          class="nav h-100 d-flex flex-column align-items-center justify-content-start py-3 px-3 gap-3 ul-wrap"
+        >
+          <li class="nav-item-left hover-icon active">
+            <a
+              class="nav-link d-flex gap-3 align-items-center"
+              aria-current="page"
+              href="#"
+            ><i class="fa-solid fa-house fa-fw"></i> <span>Home</span></a>
+          </li>
+          <li class="nav-item-left hover-icon">
+            <a class="nav-link d-flex gap-3 align-items-center" href="/profile">
+              <i class="fa-solid fa-user fa-fw"></i>
+              <span>Me</span></a>
+          </li>
+
+          <li class="nav-item-left hover-icon">
+            <a class="nav-link d-flex gap-3 align-items-center disabled" href="/group"><i
+                class="fa-solid fa-users-line fa-fw"
+              ></i><span>Book club</span></a>
+          </li>
+          <li class="nav-item-left hover-icon">
+            <a
+              class="nav-link d-flex gap-3 align-items-center"
+              href="/market"
+            ><i class="fa-solid fa-store fa-fw"></i><span>Market</span></a>
+          </li>
+          <div class="small position-absolute" style="bottom:30px">Copyright
+            &copy; Group 22</div>
+
+        </ul>
+
+      </div>
+
+    </div>
+    <div class="col-9 content-right">
+      <div class="content-wrap overflow-hidden h-100 px-3 align-items-center">
+        <div class="feed-posts d-flex flex-column gap-3 pb-3">
+          {{#each item}}
+            <div class="post bg-light" id="{{id}}">
+              <div class="d-flex flex-column gap-1">
+                <div
+                  class="post-header d-flex justify-content-between gap-2 px-3 pt-3 pb-2"
+                >
+                  <div class="post-avatar img-user">
+                    <a style="text-decoration: none !important; color: inherit !important;" href="/profile/?username={{username}}">
+                      <img src="avatar/{{avatar}}" alt="" />
+                    </a>
+                  </div>
+                  <div class="post-name d-flex flex-column">
+                    <span>
+                      <b><a style="text-decoration: none !important; color: inherit !important;" href="/profile/?username={{username}}">{{name}}</a></b>
+                    </span>
+                    <span
+                      class="fw-lighter"
+                      style="font-size: 13px"
+                    >{{date}}</span>
+                  </div>
+                  <div
+                    class="post-options hover-icon d-flex align-items-center px-3"
+                    data-bs-toggle="dropdown"
+                    aria-expanded="false"
+                  >
+                    <i class="fa-solid fa-ellipsis"></i>
+                  </div>
+                  {{#if (eq username ../user.username)}}
+                  <ul class="dropdown-menu">
+                    <li>
+                      <button type="button" class="dropdown-item" data-bs-toggle="modal" 
+                      data-bs-target="#deleteModal" name="del-post-btn" postid="{{id}}">Delete</button>
+                    </li>
+                  </ul>
+                  {{else}}
+                  <ul class="dropdown-menu">
+                    <li>
+                      <button type="button" class="dropdown-item" data-bs-toggle="modal" 
+                      data-bs-target="#modalReason" name="rp-user-btn" username="{{username}}">Report user</button>
+                    </li>
+                    <li>
+                      <button type="button" class="dropdown-item" data-bs-toggle="modal" 
+                      data-bs-target="#modalReason" name="rp-post-btn" postid="{{id}}">Report post</button>
+                    </li>
+                  </ul>
+                  {{/if}}
+
+                </div>
+
+                <div class="post-content px-3">
+                  <p>{{content}}</p>
+                </div>
+
+                <div class="post-body mb-3">
+                  <img class="img-fill" src="post/{{img}}" alt="" />
+                </div>
+                <div class="post-footer">
+                  <div class="contents-footer px-4 mb-2">
+                    <div class="py-1 d-flex justify-content-around gap-3">
+                      <div
+                        class="d-flex justify-content-center align-items-center gap-1 pt-2 pb-2 px-3 hover-icon w-50 btn-like {{active}}"
+                        id="{{id}}"
+                      >
+                      <i class="fa-solid fa-heart"></i>
+                        <span>Awesome</span>
+                      </div>
+                      <div
+                        class="d-flex justify-content-center align-items-center gap-1 pt-2 pb-2 px-3 hover-icon w-50 btn-show-comments"
+                      >
+                        <i class="fa-solid fa-message"></i>
+                        <span>Comments</span>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="post-comments" style="display: none">
+                    <div class="input-wrap px-3 mb-3">
+                      <div class="d-flex gap-2">
+                        <div class="img-user">
+                          <img src="avatar/{{../user.avatar}}" alt="" />
+                        </div>
+                        <input
+                          type="email"
+                          class="form-control shadow-none input-comments"
+                          placeholder="Your comment..."
+                        />
+                        <button
+                          type="button"
+                          class="btn btn-primary px-3 btn-comment"
+                          name="{{id}}"
+                        >
+                          <i class="fa-regular fa-comment-dots"></i>
+                        </button>
+                      </div>
+                    </div>
+                    <div class="comments-wrap px-3 d-flex flex-column gap-3 mb-2">
+                    {{#each comment}}
+                    <div class="comment">
+                      <div class="user-other d-flex flex-row gap-2">
+                        <div class="img-user">
+                          <img src="avatar/{{avatar}}" alt="" />
+                        </div>
+                        <div
+                          class="user-comment d-flex flex-column justify-content-between w-75"
+                        >
+                          <div class="p-2">
+                            <span><b>{{name}}</b></span>
+                            <p class="m-0">{{comment}}</p>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    {{/each}}
+                  </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          {{/each}}
+        </div>
+      </div>
+      <div class="right-side">
+        <div class="poll right-wrap mb-5">
+          <div class="span6">
+            <h4>Books of the week</h4>
+            <hr
+              class="my-3 mx-2"
+              style="box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px"
+            />
+            <strong>The Great Gatsby</strong>
+            <div class="progress progress-danger active mb-3 mt-1">
+              <div
+                class="progress-bar bg-warning"
+                role="progressbar"
+                style="width: 75%"
+                aria-valuenow="75"
+                aria-valuemin="0"
+                aria-valuemax="100"
+              ></div>
+            </div>
+            <strong>To Kill a Mockingbird</strong>
+            <div class="progress progress-info active mb-3 mt-1">
+              <div
+                class="progress-bar bg-info"
+                role="progressbar"
+                style="width: 50%"
+                aria-valuenow="50"
+                aria-valuemin="0"
+                aria-valuemax="100"
+              ></div>
+            </div>
+            <strong>Invisible Man</strong>
+            <div class="progress progress-striped active mb-3 mt-1">
+              <div
+                class="progress-bar bg-success"
+                role="progressbar"
+                style="width: 25%"
+                aria-valuenow="25"
+                aria-valuemin="0"
+                aria-valuemax="100"
+              ></div>
+            </div>
+            <strong>A Passage to India</strong>
+            <div class="progress progress-success active mb-3 mt-1">
+              <div
+                class="progress-bar bg-warning"
+                role="progressbar"
+                style="width: 75%"
+                aria-valuenow="75"
+                aria-valuemin="0"
+                aria-valuemax="100"
+              ></div>
+            </div>
+            <strong>Others</strong>
+            <div class="progress progress-warning active mb-3 mt-1">
+              <div
+                class="progress-bar bg-danger"
+                role="progressbar"
+                style="width: 20%"
+                aria-valuenow="20"
+                aria-valuemin="0"
+                aria-valuemax="100"
+              ></div>
+            </div>
+            <button class="btn btn-large btn-success w-100 mt-3 d-none">Voted</button>
+          </div>
+        </div>
+
+        <div class="right-wrap list-other-users mb-5">
+          <div class="suggest-wrap mb-4">
+            <h4>Maybe you know</h4>
+            <hr
+              id="suggest-list"
+              class="my-3 mx-2"
+              style="box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px"
+            />
+            {{#each person}}
+            <div
+             class="suggest-user d-flex align-items-center m-2" username="{{username}}">
+             <div class="img-user" style="margin-right: 10px;">
+                 <a href="/profile/?username={{username}}"><img src="avatar/{{avatar}}" alt="" /></a>
+             </div>
+             <div
+                 class="d-flex col flex-column justify-content-start user-name" style="overflow: hidden; font-size:16px;">
+                 <span><b>{{name}}</b></span>
+                 <span>@{{username}}</span>
+             </div>
+             <div style="width: 40px;" class="col d-flex justify-content-end">
+                 <button type="button" class="btn btn-sm btn-outline-success state"  name="{{username}}" state="{{state}}">{{state}}</button>
+             </div>
+            </div>
+            {{/each}}
+          </div>
+        </div>
+
+        <div class="right-wrap spn-container pb-3">
+          <h4 class="ps-3">Top books</h4>
+          <hr
+            id="sponsors-list"
+            class="my-2 mx-3"
+            style="box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px"
+          />
+          {{#each ads}}
+          <div class="d-flex gap-3 align-items-center justify-content-start ">
+                   <div class="spn-img" style="max-width: 60px">
+                       <img style="max-height: 100px;max-width: 60px" src="{{this.book_image}}" alt="" />
+                   </div>
+                  <div class="d-flex flex-column spn-link px-1">
+                      <span><b>
+                          <a href="{{this.amazon_product_url}}" target="_blank" class="text-decoration-none">{{this.title}}</a>
+                       </b></span>
+                       
+                   </div>
+               </div>
+           
+          {{/each}}
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+{{> report}}
+{{> confirm_delete}}
+
+<script type="module" src="./js/feed/feed.js"></script>

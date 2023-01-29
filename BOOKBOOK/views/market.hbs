@@ -1,0 +1,275 @@
+<link rel="stylesheet" href="./sass/css/styleMarket.css" />
+
+<div
+  class="base-layout position-relative d-flex justify-content-center w-100 h-100"
+>
+
+  <div class="content w-100 d-flex gap-0 h-auto pb-4 gap-3">
+    <div class="col-3 overflow-hidden pb-3 nav-container bg-light pt-4 px-2">
+      <div class="left-nav">
+        <div class="input-group rounded p-3">
+          <input
+            type="search"
+            class="form-control rounded"
+            placeholder="Search item"
+            aria-label="Search"
+            aria-describedby="search-addon"
+          />
+          <button class="input-group-text border-0" id="search-addon">
+            <i class="fas fa-search"></i>
+          </button>
+        </div>
+        <ul
+          class="nav h-100 d-flex flex-column align-items-center justify-content-start py-3 px-3 gap-3 ul-wrap"
+        >
+
+          <li class="nav-item-left hover-icon active">
+            <a class="nav-link d-flex gap-3 align-items-center" href="./"><i
+                class="fa-solid fa-store fa-fw"
+              ></i><span>Market</span></a>
+          </li>
+          <li class="nav-item-left hover-icon">
+            <a
+              class="nav-link d-flex gap-3 align-items-center"
+              href="/market/me/"
+            >
+              <i class="fa-solid fa-user fa-fw"></i>
+              <span>My items</span></a>
+          </li>
+           <li class="nav-item-left hover-icon">
+            <a
+              class="nav-link d-flex gap-3 align-items-center disabled"
+              href="/market/me/"
+            >
+            <i class="fa-regular fa-gem"></i>
+              <span>Auction</span></a>
+          </li>
+          <div class="small position-absolute" style="bottom:30px">Copyright
+            &copy; Group 22</div>
+
+        </ul>
+
+      </div>
+
+    </div>
+    <div class="col-9 prod-container px-3 py-2 bg-light">
+      <div class="p-3" id="top-selling">
+        <h5>Top science by the New York Time</h5>
+        <hr style="box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px" />
+        <div
+          id="carouselExampleCaptions"
+          class="carousel slide"
+          data-bs-ride="carousel"
+        >
+
+          <div class="carousel-inner">
+            {{#each ads}}
+              {{#if @first}}
+                <div class="carousel-item active">
+                  
+              {{else}}
+                <div class="carousel-item ">
+              {{/if}}
+                    <div class="d-flex justify-content-center align-items-center">
+                    <div class="col carousel-img-container">
+                      <img src="{{this.book_image}}" alt="{{this.title}}" />
+
+                    </div>
+                    <div class="col carousel-des p-3">
+                      <h1 class="display-1">#{{this.rank}}</h1>
+                      <h3 style=" letter-spacing: 3px;">
+                        <a
+                          href="{{this.amazon_product_url}}"
+                          target="_blank"
+                        >
+                         {{this.title}}
+                        </a>
+                      </h3>
+                      <strong>
+                        by {{this.author}}
+                      </strong>
+                    </div>
+                  </div>
+                </div>
+              {{!-- <div class="carousel-item active">
+
+                <div class="d-flex justify-content-center align-items-center">
+                  <div class="col carousel-img-container">
+                    <img
+                      src="https://storage.googleapis.com/du-prd/books/images/9781429969352.jpg"
+                      alt="..."
+                    />
+
+                  </div>
+                  <div class="col carousel-des p-3">
+                    <h1 class="display-1">#1</h1>
+                    <h3 style=" letter-spacing: 3px;">
+                      <a
+                        href="http://www.amazon.com/Being-Mortal-Medicine-What-Matters/dp/0805095152?tag=NYTBSREV-20"
+                        target="_blank"
+                      >
+                        BEING MORTAL
+                      </a>
+                    </h3>
+                    <strong>
+                      by Bessel van der Kolk
+                    </strong>
+                  </div>
+                </div>
+              </div> --}}
+            {{/each}}
+          </div>
+          <button
+            class="carousel-control-prev"
+            type="button"
+            data-bs-target="#carouselExampleCaptions"
+            data-bs-slide="prev"
+          >
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Previous</span>
+          </button>
+          <button
+            class="carousel-control-next"
+            type="button"
+            data-bs-target="#carouselExampleCaptions"
+            data-bs-slide="next"
+          >
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Next</span>
+          </button>
+        </div>
+
+      </div>
+      <div class="mt-2 gap-2 p-3">
+        <h5>Selling on market</h5>
+        <hr style="box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px" />
+        <div class="grid-prod">
+          {{#each itemList}} 
+                     <div class="card list-item-group zoom-in-card" post_id="{{this.post_id}}">
+                        <h5 class="card-header d-flex align-items-center" style="font-size: 15px;" >
+                         {{this.title}} 
+                        
+                        </h5>
+
+                        <div class="card-body to-hover" data-bs-toggle="modal" data-bs-target="#modal-user-item" style="margin: 0 auto;">
+                           <img src="./market/{{this.img}}" class="card-img-top zoom-in-img item-img" alt="..." />
+                           <hr />
+
+                           <div class="card border-success align-items-center price-card mb-2" id="tinyprice">
+                             {{displayVND this.price}} 
+                           
+                           </div>
+                           <div class="display-on-hover">
+                              <p class="card-text tinydes" style="height:70px">
+                                 {{this.text}} 
+                                
+                              </p>
+
+                           </div>
+                           <div class="post_id" style="display: none;">1</div>
+                        </div>
+                     </div>
+
+                    {{/each}} 
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+<!-- Modal see item detail -->
+<div
+  class="modal fade"
+  id="modal-user-item"
+  tabindex="-1"
+  aria-labelledby="modal-user-item-Label"
+  aria-hidden="true"
+>
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header p-2">
+        <h5
+          class="modal-title px-2"
+          id="modal-user-item-Label"
+          id="item-title"
+        >1 nùi sách rẻ vcl</h5>
+        <div
+          class="hover-icon d-flex align-items-center px-3"
+          data-bs-toggle="dropdown"
+          aria-expanded="false"
+        >
+          <i class="fa-solid fa-ellipsis"></i>
+        </div>
+        <ul class="dropdown-menu">
+          <li><a class="dropdown-item" href="#">Report seller</a></li>
+          <li>
+            <a class="dropdown-item" href="#">Report post</a>
+          </li>
+        </ul>
+      </div>
+      <div class="modal-body">
+        <div class="d-flex">
+          <div
+            class="post-header d-flex justify-content-between gap-2 px-2 col pb-2"
+          >
+            <div class="post-avatar img-user">
+              <img id="seller-avt" src="./images/nguyen.png" alt="" />
+            </div>
+            <div class="post-name d-flex flex-column">
+              <span><b id="seller-name"> seller name</b></span>
+              <span
+                class="fw-lighter"
+                style="font-size: 13px"
+                id="time-post-item"
+              >21 hours ago</span>
+            </div>
+          </div>
+          <div class="w-50">
+            <div
+              class="w-100 card bg-success text-light align-items-center"
+              id="item-price"
+            >
+              <!-- {{this.price}} -->
+              100.000 VND
+            </div>
+          </div>
+        </div>
+        <div class="post-content px-3">
+          <p id="item-des">Đã qua môn cần bán sách</p>
+        </div>
+
+        <div class="post-body mb-3">
+          <img
+            class="img-fill"
+            id="item-img"
+            src="market/item-img-1673410449846-7513906"
+            alt=""
+          />
+        </div>
+        <div class="pt-2 pb-2 px-3">
+          <div id="cmt-container" class="d-flex justify-content-between gap-2">
+            <input
+              type="text"
+              class="form-control"
+              id="inputComment"
+              placeholder="Send message to seller..."
+            />
+            <div class="hover-icon d-flex justify-content-between">
+              <i
+                class="fa-solid fa-paper-plane px-3 d-flex align-items-center justify-content-center"
+              ></i>
+            </div>
+            <button
+              id="btn-del-item"
+              style="display: none;"
+              class="btn btn-danger w-100"
+            ><i class="fa-solid fa-trash-can"></i>
+              Delete post
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<script type="module" src="./js/market/market.js"></script>

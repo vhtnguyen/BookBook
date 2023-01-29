@@ -1,0 +1,76 @@
+<div class="modal-new-post">
+  <div
+    class="modal fade"
+    id="modalNewPost"
+    tabindex="-1"
+    aria-labelledby="exampleModalLabel"
+    aria-hidden="true"
+  >
+    <div class="modal-dialog modal-lg modal-dialog-centered">
+      <div class="modal-content newpost-container">
+        <div class="modal-header position-relative d-flex" style="color: black">
+          <h1
+            class="modal-title fs-5 text-center"
+            style="flex: 1"
+            id="exampleModalLabel"
+          >
+            New post
+          </h1>
+          <button
+            type="button"
+            class="hover-icon py-1 px-3 position-absolute"
+            style="top: 15%"
+            data-bs-dismiss="modal"
+            aria-label="Close"
+          >
+            <i class="fa-solid fa-xmark"></i>
+          </button>
+        </div>
+        <div class="modal-body px-2">
+          <form
+            id="post_form"
+            class="justify-content-between gap-1"
+            action="/newpost"
+            enctype="multipart/form-data"
+            method="post"
+          >
+            <div class="input-wrap position-relative">
+              <div class="d-flex align-items-center justify-content-center">
+                <span class="m-0">Select image...</span>
+              </div>
+              <input type="file" class="input-file d-none" name="img_upload" />
+            </div>
+
+            <div class="d-flex flex-column justify-content-around py-3 px-2">
+              <div class="">
+                <textarea
+                  class="form-control"
+                  id="message-text"
+                  placeholder="What you're thinking?"
+                  name="content"
+                ></textarea>
+              </div>
+            </div>
+          </form>
+        </div>
+        <div class="modal-footer">
+          <button
+            type="button"
+            class="btn btn-secondary"
+            data-bs-dismiss="modal"
+          >
+            Close
+          </button>
+          <button
+            id="submit_post"
+            type="submit"
+            form="post_form"
+            style="width: 100px;"
+            class="btn btn-primary"
+            disabled="true"
+          >Post</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

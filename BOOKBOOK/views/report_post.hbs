@@ -1,0 +1,60 @@
+<link rel="stylesheet" href="./sass/css/styleProfile.css" />
+<link rel="stylesheet" href="./sass/css/styleAdmin.css" />
+
+<div class="base-layout position-relative d-flex justify-content-center w-100 h-100" id="idOfReport">
+    <div class="content w-100 d-flex gap-0 h-auto pb-4 gap-3">
+        <div class="col-3 overflow-hidden pb-3 nav-container bg-light pt-4 px-2">
+            <div class="left-nav">
+                <ul
+                    class="nav h-100 d-flex flex-column align-items-center justify-content-start py-3 px-3 gap-3 ul-wrap">
+                    <li class="nav-item-left hover-icon">
+                        <a class="nav-link d-flex gap-3 align-items-center active" href="/admin/post" rp-type="post">
+                        <i class="fa-solid fa-clipboard-user fa-fw"></i>
+                        <span>Report Post</span></a>
+                    </li>
+                    <li class="nav-item-left hover-icon">
+                        <a class="nav-link d-flex gap-3 align-items-center" href="/admin/user" rp-type="user">
+                        <i class="fa-solid fa-user-tag fa-fw"></i>
+                        <span>Report User</span></a>
+                    </li>
+
+                    <div class="small position-absolute " style="bottom:10px">Copyright &copy; Group 22</div>
+
+                </ul>
+
+            </div>
+
+        </div>
+        <div class="col-9 px-3 py-2 bg-light">
+            <table class="table table-striped"  id="rp-table">
+                <thead>
+                    <tr>
+                        <th scope="col">ReportID</th>
+                        <th scope="col">PostID</th>
+                        <th scope="col">Reason</th>
+                        <th scope="col">Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {{#each rp_posts}}
+                    <tr>
+                        <th scope="row">{{dataValues.report_id}}</th>
+                        <td>{{dataValues.post_id}}</td>
+                        <td>{{dataValues.reason}}</td>
+                        <td>
+                            <button class="btn btn-info me-3" name="view-post" postid="{{dataValues.post_id}}">View</button>
+                            <button class="btn btn-success me-3" name="skip" onclick="confirmSkip(this, 'post')">Skip</button>
+                            <button class="btn btn-danger me-3" name="delete" onclick="confirmDelete(this, 'post')">Delete</button>
+                        </td>
+                    </tr>
+                    {{/each}}
+                </tbody>
+            </table>
+            
+        </div>
+    </div>
+</div>
+
+{{> confirm_delete}}
+{{> confirm_skip}}
+{{> view_post}}

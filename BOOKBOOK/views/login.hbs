@@ -1,0 +1,32 @@
+<div class="content-form login isActive p-4 px-5 container">
+   <form class="needs-validation" method="post" action="/login" id="login-form" novalidate>
+         <label class="form-check-label mb-3 fs-3 fw-bold">Log in</label>
+         <div class="mb-3">
+            <input type="text" class="form-control p-3 pr-28px" id="username" placeholder="Username"
+            name="username" onload="checkUsername(this)" required/>
+            <div id="errorUn" style="display: none;">{{ errorUnMsg }}</div>
+            <div class="invalid-feedback" id="un-fb"><small>Not begin with a digit and contain at least 6 characters, including alphabet letters, numbers or _ (underscore)</small></div>
+         </div>
+         
+         <div class="mb-3">
+            <input type="password" class="form-control p-3 pr-28px" placeholder="Password"
+            id="password" name="password" onload="checkPassword(this)" required/>
+            <div id="errorPw" style="display: none;">{{ errorPwMsg }}</div>
+            <div class="invalid-feedback" id="pw-fb"><small>At least 8 characters, 1 uppercase, 1 lowercase and 1 number</small></div>
+         </div>
+         
+         <button class="btn btn-primary fw-bold btn-login w-100 my-2" type="submit">Log In</button>
+   </form>
+   <hr style="box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;">
+   <div class="mt-3 d-flex justify-content-center gap-2">
+         <label class="form-check-label fw-lighter fst-italic" for="exampleCheck1">
+            <a href="#">Forgot password?</a>    
+         </label>
+         <span class="fw-lighter fw-bold" style="font-size: 13.5px;">or</span>
+         <label class="form-check-label mb-3 fw-lighter fst-italic label-sign-up" for="exampleCheck1">
+            <a href="/signup">Create an account</a>
+         </label>
+   </div>
+</div>
+
+<script src="./js/login/login.js"></script>

@@ -1,0 +1,214 @@
+
+
+<link rel="stylesheet" href="./sass/css/styleProfile.css" />
+
+<div id="userViewed" style="display: none;">{{ userViewed.username }}</div>
+<div id="permission" style="display: none;">{{ permission }}</div>
+<div class="base-layout position-relative d-flex justify-content-center w-100 h-auto">
+   <div class="content w-100 d-flex gap-0 h-auto pb-4 gap-3">
+      <div class="left-side col-3 card rounded-5 rounded-bottom overflow-hidden pb-3">
+         <div>
+            <div class="bgr-cover d-flex flex-column justify-content-center align-items-center">
+                  <div class="profile-avt" data-bs-toggle="dropdown" aria-expanded="false">
+                     <img class="d-block big-avt" src="avatar/{{ userViewed.avatar }}" alt="" />
+                  </div>
+            </div>
+            <div style="height: 50px;"></div>
+
+            <div class="profile-info px-4 pt-2">
+                  <div><b>{{ userViewed.fullname }}</b> </div>
+                  <h5 class="small text-center">@{{ userViewed.username }}</h5>
+
+                  <div class="d-flex text-center mt-3 pe-2 gap-2 mb-3 ">
+
+                     <div class="followers d-flex col flex-column justify-content-center ">
+                        <span class="small-label">
+                           {{ followers.length }}
+                        </span>
+                        <span class="small-label">followers</span>
+                     </div>
+                     <div class="divider"></div>
+                     <div class="posts d-flex col flex-column justify-content-center ">
+                        <span class="small-label">
+                           {{ post.length }}
+                        </span>
+                        <span class="small-label">posts</span>
+                     </div>
+                     <div class="divider"></div>
+                     <div class="following d-flex col flex-column justify-content-center ">
+                        <span class="small-label">
+                           {{ following.length }}
+                        </span>
+                        <span class="small-label">following</span>
+                     </div>
+                  </div>
+            </div>
+
+         </div>
+         <hr class="my-2 mx-3" style="box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px" />
+
+         <div class="bio card-body profile-card-body">
+            <div class="small text-center"><i class="fa-solid fa-location-dot small text-success"></i> 
+               {{ userViewed.location }}
+            </div>
+            <div class="about-box d-flex flex-column px-2">
+               <span class="small mt-2">{{ userViewed.about }}</span>
+            </div>
+         </div>
+         <hr class="my-2 mx-3" style="box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px" />
+         <div class="card-body profile-card-body overflow-auto d-flex flex-column">
+
+            <div class="d-flex flex-column justify-content-between gap-3 my-2">
+               {{#if (eq userViewed.username user.username)}}
+               <button type="button" class="btn btn-outline-info w-100" data-bs-toggle="modal"
+                  data-bs-target="#modalNewPost">
+                  New post
+               </button>
+               <button type="button" class="btn btn-outline-primary w-100" data-bs-toggle="modal"
+                  data-bs-target="#modalEditProfile">
+                  Edit profile
+               </button>
+               {{else}}
+                  {{#if (notAdmin permission)}}
+                  {{#if (isFollowedByUser userViewed.username followedByUser) }}
+                  <button type="button" class="btn btn-info w-100" data-bs-toggle="dropdown" aria-expanded="false" id="following-btn">
+                     Following <i class="fa fa-check"></i>
+                  </button>
+                  <ul class="dropdown-menu dropdown-menu-end">
+                     <li>
+                        <button type="button" class="dropdown-item" name="unfollow" id="unflw-viewedUser-btn">
+                           Unfollow
+                        </button>
+                     </li>
+                  </ul>
+                  {{else}}
+                  <button type="button" class="btn btn-outline-info w-100" name="follow" id="flw-viewedUser-btn">
+                     Follow
+                  </button>
+                  {{/if}}
+                  {{/if}}
+               {{/if}}
+            </div>
+         </div>
+
+         <hr class="my-2 mx-3" style="box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px" />
+
+         <div class="card-body profile-card-body">
+            <div class="list-other-users gap-2">
+                  <h5 id="followers-list">Followers</h5>
+                  {{#each (smallFollowersList followers)}}
+                  <div class="user-box d-flex gap-2 pt-2 pb-2 align-items-center">
+                     <div class="box-image">
+                        <img src="avatar/{{ avatar }}" alt="" />
+                     </div>
+                     <div class="box-name d-flex flex-column justify-content-center align-items-flex-start">
+                        <span><b>{{ fullname }}</b></span>
+                        <span class="other-user-username">@{{ username }}</span>
+                     </div>
+                     {{#if (notEq username ../user.username)}}
+                        {{#if (notAdmin ../permission)}}
+                        {{#if (isFollowedByUser username ../followedByUser)}}
+                        <div class="box-follow">
+                           <button type="button" class="btn btn-success btn-sm" data-bs-toggle="dropdown" aria-expanded="false"
+                              name="following">
+                              Following <i class="fa fa-check"></i>
+                           </button>
+                           <ul class="dropdown-menu dropdown-menu-end dropdown-sm">
+                              <li>
+                                 <button type="button" class="btn dropdown-item" name="unfollow">
+                                    Unfollow
+                                 </button>
+                              </li>
+                           </ul>
+                        </div>
+                        {{else}}
+                        <div class="box-follow">
+                           <button type="button" class="btn btn-outline-success" name="follow">Follow</button>
+                        </div>
+                        {{/if}}
+                        {{/if}}
+                     {{/if}}
+                  </div>
+                  {{/each}}
+            </div>
+         </div>
+
+         <hr class="my-2 mx-3" style="box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px" />
+
+         <div class="card-body profile-card-body">
+            <div class="list-other-users gap-2">
+                  <h5 id="following-list">Following</h5>
+                  {{#each (smallFollowingList following)}}
+                  <div class="user-box d-flex gap-2 pt-2 pb-2 align-items-center">
+                     <div class="box-image">
+                        <img src="avatar/{{ avatar }}" alt="" />
+                     </div>
+                     <div class="box-name d-flex flex-column justify-content-center align-items-flex-start">
+                        <span><b>{{ fullname }}</b></span>
+                        <span class="other-user-username">@{{ username }}</span>
+                     </div>
+                     {{#if (notEq username ../user.username)}}
+                        {{#if (notAdmin ../permission)}}
+                        {{#if (isFollowedByUser username ../followedByUser)}}
+                        <div class="box-follow">
+                           <button type="button" class="btn btn-success btn-sm" data-bs-toggle="dropdown" aria-expanded="false">
+                              Following <i class="fa fa-check"></i>
+                           </button>
+                           <ul class="dropdown-menu dropdown-menu-end dropdown-sm">
+                              <li>
+                                 <button type="button" class="btn dropdown-item" name="unfollow">
+                                    Unfollow
+                                 </button>
+                              </li>
+                           </ul>
+                        </div>
+                        {{else}}
+                        <div class="box-follow">
+                           <button type="button" class="btn btn-outline-success" name="follow">Follow</button>
+                        </div>
+                        {{/if}}
+                        {{/if}}
+                     {{/if}}
+                  </div>
+                  {{/each}}
+            </div>
+         </div>
+      </div>
+{{!-- ----------------------- --}}
+      <div class="content-right col-9">
+         {{#if (notAdmin permission)}}
+         {{#if (notEq user.username userViewed.username)}}
+         <div class="header-setting hover-icon action-dot" data-bs-toggle="dropdown" aria-expanded="false" id="report-user">
+            <i class="fa-solid fa-ellipsis"></i>
+         </div>
+
+         <ul class="dropdown-menu">
+            <li class="d-flex align-items-center px-1 hover-icon">
+               <button type="button" class="dropdown-item" data-bs-toggle="modal" data-bs-target="#modalReason" id="report-user">
+                  <i class="fa-regular fa-flag pe-2"></i>
+                  <span class="px-0"> Report user</span>
+               </button>
+            </li>
+
+         </ul>
+         {{/if}}
+         {{/if}}
+         <div class="image-list p-3">
+            {{#each post}}
+               <div class="images" username="{{dataValues.author_username}}" data-bs-toggle="modal" data-bs-target="#exampleModal" liked="{{dataValues.liked}}">
+                  <img src="post/{{dataValues.img}}" id="{{dataValues.post_id}}" alt="" />
+               </div>
+            {{/each}}
+         </div>
+      </div>
+   </div>
+</div>
+{{> view_post}}
+{{> delete_post}}
+{{> new_post}}
+{{> report}}
+{{> edit_profile}}
+
+
+<script type="module" src="./js/profile/profile.js"></script>
+<script type="module" src="./js/post/newpost.js"></script>

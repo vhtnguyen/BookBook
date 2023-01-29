@@ -1,0 +1,96 @@
+<link rel="stylesheet" href="./sass/css/styleSearch.css" />
+<div
+  class="base-layout position-relative d-flex justify-content-center w-100 h-100"
+>
+  <div class="content w-100 d-flex gap-0 h-auto pb-4 gap-3">
+    <div class="col-3 overflow-hidden pb-3 nav-container bg-light pt-4 px-2">
+      <div class="left-nav">
+        <form id="left-form" action="./user"  method="get"
+              style="margin: 0;">
+        <div class="input-group rounded py-3 d-flex justify-content-center">
+          <input
+          class="input-search px-2 py-2"
+            type="text"
+            class="form-control rounded"
+            placeholder="Search..."
+            name="user"
+            style="border: 1px solid #f0f0f0;"
+          />
+          <button type="submit" class="input-group-text border-0" id="left-submit" style="border: none;">
+            <i class="fas fa-search"></i>
+          </button>
+           </form>
+        </div>
+        <ul
+          class="nav h-100 d-flex flex-column align-items-center justify-content-start py-3 px-3 gap-3 ul-wrap"
+        >
+
+          <li class="nav-item-left hover-icon active">
+            <a class="nav-link d-flex gap-3 align-items-center" href="#"><i
+                class="fa-solid fa-users fa-fw"
+              ></i><span>People</span></a>
+          </li>
+          <li class="nav-item-left hover-icon">
+            <a
+              class="nav-link d-flex gap-3 align-items-center disabled"
+              href=""
+            >
+              <i class="fa-solid fa-address-card fa-fw"></i>
+              <span>Posts</span></a>
+          </li>
+          <div class="small position-absolute" style="bottom:30px">Copyright
+            &copy; Group 22</div>
+
+        </ul>
+
+      </div>
+
+    </div>
+    <div class="col-9 px-4 py-3 bg-light search-result">
+      <h4>Results for "{{query}}"</h4>
+      <hr style="box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px" />
+      <div class="list-group w-75">
+        {{#each result}}
+          <div
+            class="list-group-item list-group-item-action flex-column align-items-start"
+          >
+            <div class="d-flex w-100 justify-content-center align-items-center">
+              <img src="/avatar/{{this.avatar}}" class="user-img col-3" />
+              <div class="col mx-3 p-2">
+                <h5 class="m-0"><a
+                    href="/profile?username={{this.username}}"
+                    style="color: black;text-decoration: none;"
+                  >{{this.fullname}}</a></h5>
+                <p class="m-0">@{{this.username}}</p>
+                <p class="m-0">{{this.location}}</p>
+              </div>
+              <div class="col-3">
+                {{#if (notEq this.username ../user.username)}}
+                  {{#if (isFollowedByUser this.username ../following)}}
+                  <div class="box-follow" user="{{ this.username }}">
+                      <button type="button" class="btn btn-success" data-bs-toggle="dropdown" aria-expanded="false">
+                        Following <i class="fa fa-check"></i>
+                      </button>
+                      <ul class="dropdown-menu dropdown-menu-end">
+                        <li>
+                            <button type="button" class="btn dropdown-item" name="unfollow">
+                              Unfollow
+                            </button>
+                        </li>
+                      </ul>
+                  </div>
+                  {{else}}
+                  <div class="box-follow" user="{{ this.username }}">
+                      <button type="button" class="btn btn-outline-success" name="follow">Follow</button>
+                  </div>
+                  {{/if}}
+                {{/if}}
+              </div>
+            </div>
+          </div>
+        {{/each}}
+      </div>
+    </div>
+  </div>
+</div>
+<script type="module" src="./js/search/search.js"></script>

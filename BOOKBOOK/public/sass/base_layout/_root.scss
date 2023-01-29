@@ -1,0 +1,29 @@
+:root {
+   // light
+   --light-orange: rgb(255, 158, 29);
+   --light-blue: rgb(35, 135, 241);
+   --light-gray: rgb(170, 170, 170);
+   // dark
+   --dark-orange: rgb(255, 117, 47);
+   --white: white;
+   // border
+   --border-light-gray: rgb(226, 226, 226);
+   //hover
+   --bgr-light-gray: rgba(226, 226, 226, 0.652);
+   --text-dart-orange: rgb(255, 117, 47);
+
+   // font
+   --font: 'Font Awesome 6 Free';
+}
+
+html {
+   margin: 0;
+   padding: 0;
+}
+body {
+   margin: 0;
+   padding: 0;
+   width: 100%;
+   height: auto;
+   box-sizing: border-box;
+}

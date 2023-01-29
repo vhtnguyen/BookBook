@@ -1,0 +1,263 @@
+<link rel="stylesheet" href="../sass/css/styleMarket.css" />
+<div
+  class="base-layout position-relative d-flex justify-content-center w-100 h-100"
+>
+  <div class="content w-100 d-flex gap-0 h-auto pb-4 gap-3">
+    <div class="col-3 overflow-hidden pb-3 nav-container bg-light pt-4 px-2">
+      <div class="left-nav">
+        <div class="input-group rounded p-3">
+          <input
+            type="search"
+            class="form-control rounded"
+            placeholder="Search item"
+            aria-label="Search"
+            aria-describedby="search-addon"
+          />
+          <button class="input-group-text border-0" id="search-addon">
+            <i class="fas fa-search"></i>
+          </button>
+        </div>
+        <ul
+          class="nav h-100 d-flex flex-column align-items-center justify-content-start py-3 px-3 gap-3 ul-wrap"
+        >
+
+          <li class="nav-item-left hover-icon">
+            <a
+              class="nav-link d-flex gap-3 align-items-center"
+              href="/market"
+            ><i class="fa-solid fa-store fa-fw"></i><span>Market</span></a>
+          </li>
+          <li class="nav-item-left hover-icon active">
+            <a
+              class="nav-link d-flex gap-3 align-items-center"
+              href="./market-me.html"
+            >
+              <i class="fa-solid fa-user fa-fw"></i>
+              <span>My items</span></a>
+          </li>
+          <li class="nav-item-left hover-icon">
+            <a
+              class="nav-link d-flex gap-3 align-items-center disabled"
+              href="/market/me/"
+            >
+            <i class="fa-regular fa-gem"></i>
+              <span>Auction</span></a>
+          </li>
+          <div class="small position-absolute" style="bottom:30px">Copyright
+            &copy; Group 22</div>
+
+        </ul>
+
+      </div>
+
+    </div>
+    <div class="col-9 prod-container px-3 py-2 bg-light">
+      <div class="mt-2 gap-2 p-3">
+        <div class="d-flex justify-content-between align-items-center">
+          <h4>Selling by {{seller}}</h4>
+          <button
+            class="btn btn-success"
+            data-bs-toggle="modal"
+            data-bs-target="#modal-sell-item"
+          ><i class="fa-solid fa-plus"></i></button>
+        </div>
+        <hr style="box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px" />
+        <div class="grid-prod">
+          {{#each itemList}}
+            <div class="card list-item-group" post_id="1">
+              <h5
+                class="card-header d-flex justify-content-between align-items-center"
+                style="font-size: 15px;"
+              >
+                {{this.title}}
+
+                <button class="btn btn-danger btn-sm btn-del-item" post_id="1">
+                  <i class="fa-solid fa-xmark"></i>
+                </button>
+              </h5>
+              <div
+                class="card-body"
+                data-bs-toggle="modal"
+                data-bs-target="#modal-user-item"
+              >
+                <img src="market/{{this.img}}" class="card-img-top item-img" alt="..." />
+                <hr />
+
+                <p class="card-text tinydes" style="height:70px">
+                  {{this.text}}
+
+                </p>
+                <div
+                  class="card border-success align-items-center price-card mb-2"
+                  id="tinyprice"
+                >
+                  {{displayVND this.price}}
+
+                </div>
+              </div>
+            </div>
+
+          {{/each}}
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+<!-- Modal see item detail -->
+<div
+  class="modal fade"
+  id="modal-user-item"
+  tabindex="-1"
+  aria-labelledby="modal-user-item-Label"
+  aria-hidden="true"
+>
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header p-2">
+        <h5
+          class="modal-title px-2"
+          id="modal-user-item-Label"
+          id="item-title"
+        >Cần bán sách</h5>
+        <button
+          type="button"
+          class="btn-close"
+          data-bs-dismiss="modal"
+          aria-label="Close"
+        ></button>
+      </div>
+      <div class="modal-body">
+        <div class="d-flex">
+          <div
+            class="post-header d-flex justify-content-between gap-2 px-2 col pb-2"
+          >
+            <div class="post-avatar img-user">
+              <img id="seller-avt" src="./images/nguyen.png" alt="" />
+            </div>
+            <div class="post-name d-flex flex-column">
+              <span><b id="seller-name"> seller name</b></span>
+              <span
+                class="fw-lighter"
+                style="font-size: 13px"
+                id="time-post-item"
+              >21 hours ago</span>
+            </div>
+          </div>
+          <div class="w-50">
+            <div
+              class="w-100 card bg-success text-light align-items-center"
+              id="item-price"
+            >
+              <!-- {{this.price}} -->
+              100.000 VND
+            </div>
+          </div>
+        </div>
+        <div class="post-content px-3">
+          <p id="item-des">Đã qua môn cần bán sách</p>
+        </div>
+
+        <div class="post-body mb-3">
+          <img
+            class="img-fill"
+            id="item-img"
+            src="market/item-img-1673401878247-213136437"
+            alt=""
+          />
+        </div>
+        <div class="pt-2 pb-2 px-3">
+          <button class="btn btn-danger w-100 btn-del-item" post_id="1">
+            <i class="fa-solid fa-trash-can">
+            </i>
+            Delete post
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- Modal add item to sell -->
+<div
+  class="modal fade"
+  id="modal-sell-item"
+  tabindex="-1"
+  aria-labelledby="exampleModalLabel"
+  aria-hidden="true"
+>
+  <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+    <div class="modal-content newpost-container">
+      <div class="modal-header position-relative d-flex" style="color: black">
+        <h1
+          class="modal-title fs-5 text-center"
+          style="flex: 1"
+          id="exampleModalLabel"
+        >
+          Selling item
+        </h1>
+      </div>
+      <div class="modal-body px-2">
+        <form id="new-item-form" class="justify-content-between gap-1" action="./" method="post" enctype="multipart/form-data">
+
+          <div class="preview">
+            <img
+              id="img-preview"
+              src="market/item-img-1673401878247-213136437"
+              style="visibility: hidden ;"
+            />
+
+            <label for="file-input"><i class="fa-solid fa-plus"></i>
+              Upload item image...</label>
+            <input accept="image/*" type="file" id="file-input" name="item-img" required/>
+          </div>
+          <div class="px-5 pt-3">
+            <label for="sell-title" class="form-label">Title</label>
+            <input
+              type="text"
+              class="form-control"
+              id="sell-title"
+              name="title"
+              required
+            />
+            <label for="sell-des" class="form-label">Description</label>
+            <input
+              type="text"
+              class="form-control"
+              id="sell-des"
+              name="description"
+              required
+            />
+            <label for="sell-price" class="form-label" >Price</label>
+            <input
+              type="number"
+              class="form-control"
+              id="sell-price"
+              name="price"
+              required
+            />
+          </div>
+       
+      </div>
+      <div class="modal-footer">
+
+        <input type="submit"
+          id="btn-post-item"
+          type="button"
+          style="width: 100px;"
+          class="btn btn-primary"
+          value="Sell"
+        ></input>
+         </form>
+        <button
+          id="btn-cancel-post"
+          type="button"
+          class="btn btn-secondary"
+          data-bs-dismiss="modal"
+        >
+          Cancel
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+<script type="module" src="./js/market/market.js"></script>

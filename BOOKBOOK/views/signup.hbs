@@ -1,0 +1,143 @@
+<div class="content-form sign-up p-4 px-5 container isActive">
+  <form class="needs-validation" id="signup-form" novalidate>
+    <label class="form-check-label mb-3 fs-3 fw-bold" for="exampleCheck1">Sign
+      up</label>
+    <div class="mb-3">
+      <input
+        type="text"
+        class="form-control p-3 pr-28px"
+        id="fullname"
+        name="fullname"
+        placeholder="Full Name"
+        required
+      />
+      <div class="invalid-feedback"><small>Require to capitalize the first
+          letter of each word</small></div>
+    </div>
+    <div class="mb-3">
+      <input
+        type="text"
+        class="form-control p-3 pr-28px"
+        id="username"
+        name="username"
+        placeholder="Username"
+        required
+      />
+      <div class="invalid-feedback" id="un-fb"><small>Not begin with a digit and
+          contain at least 6 characters, including alphabet letters, numbers or
+          _ (underscore)</small></div>
+    </div>
+    <div class="mb-3 d-flex gap-3">
+      <div>
+        <input
+          type="password"
+          class="form-control p-3 pr-28px"
+          placeholder="Password"
+          name="password"
+          id="password"
+          required
+        />
+        <div class="invalid-feedback"><small>At least 8 characters, 1 uppercase,
+            1 lowercase and 1 number</small></div>
+      </div>
+      <div>
+        <input
+          type="password"
+          class="form-control p-3 pr-28px"
+          id="confirm_pw"
+          name="confirm_pw"
+          placeholder="Confirm password"
+          required
+        />
+        <div class="invalid-feedback"><small>Must be the same with password</small></div>
+      </div>
+
+    </div>
+
+    <div class="mb-3 d-flex gap-3">
+      <div class="position-relative d-flex justify-content-center text-center">
+        <label
+          class="position-absolute form-check-label text-decoration-none gray-text"
+          style="top:12px;left:17px"
+          for="dob"
+        >DOB</label>
+        <input
+          type="date"
+          class="col form-control text-end pe-3 gap-2"
+          style="padding-right: 25px !important;"
+          id="dob"
+          name="dob"
+          required
+        />
+      </div>
+
+      <div class="d-flex flex-column justify-content-center">
+        <label
+          class="form-check-label text-decoration-none gray-text"
+          for="gender"
+        >Gender</label>
+        <div class="d-flex">
+          <div class="form-check">
+            <input
+              class="form-check-input"
+              type="radio"
+              name="gender"
+              id="male"
+              value="male"
+              required
+              checked
+            />
+            <label class="form-check-label" for="male"> Male </label>
+          </div>
+          <div class="form-check">
+            <input
+              class="form-check-input"
+              type="radio"
+              name="gender"
+              id="female"
+              value="female"
+            />
+            <label class="form-check-label" for="female">
+              Female
+            </label>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="mb-3 d-flex gap-3">
+      <div>
+        <input
+          type="email"
+          class="form-control p-3 pr-28px"
+          placeholder="Email"
+          id="email"
+          name="email"
+          required
+        />
+        <div class="invalid-feedback"><small>A valid email following
+            regular-mail-format</small></div>
+      </div>
+      <div>
+        <input
+          type="text"
+          class="form-control p-3 pr-28px"
+          id="secretkey"
+          name="secretkey"
+          placeholder="What city were you born in?"
+          required
+        />
+        <div class="invalid-feedback"><small>Please fill out this field</small></div>
+      </div>
+    </div>
+    <button class="btn btn-primary fw-bold btn-signup w-100 my-2">Sign Up</button>
+  </form>
+  <hr style="box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;" />
+  <div class="mt-2 d-flex justify-content-center gap-2">
+    <label
+      class="form-check-label mb-3 fw-lighter fst-italic label-login"
+    >Already have an account?
+      <a class="label-login" href="/login">Log in</a></label>
+  </div>
+</div>
+
+<script src="./js/signup/signup.js"></script>

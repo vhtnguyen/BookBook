@@ -1,0 +1,31 @@
+<div class="modal fade" id="skipModal" tabindex="-1" role="dialog" aria-labelledby="skipModalTitle" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header position-relative d-flex" style="color: black">
+        <h1
+          class="modal-title fs-5 text-center"
+          style="flex: 1"
+          id="skipModalLabel"
+        >
+          Confirm skip
+        </h1>
+        <button
+          type="button"
+          class="hover-icon py-1 px-3 position-absolute"
+          style="top: 15%"
+          data-bs-dismiss="modal"
+          aria-label="Close"
+        >
+          <i class="fa-solid fa-xmark"></i>
+        </button>
+      </div>
+      <div class="modal-body mx-4">
+        Are you sure to skip?
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">No</button>
+        <button type="button" class="btn btn-primary" id="confirm-skip">Yes</button>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,114 @@
+<div class="modal-wrap">
+  <div
+    class="modal fade"
+    id="exampleModal"
+    tabindex="-1"
+    data-bs-keyboard="false"
+    aria-labelledby="exampleModalLabel"
+    aria-hidden="true"
+  >
+    <button
+      type="button"
+      class="btn-close position-absolute d-flex align-items-center"
+      data-bs-dismiss="modal"
+      aria-label="Close"
+    >
+      <i class="fa-solid fa-xmark"></i>
+    </button>
+    <div
+      class="modal-dialog modal-fullscreen-md-down modal-dialog-centered modal-container"
+    >
+      <div class="modal-content flex-row m-0 bg-black">
+        <div class="w-75 position-relative">
+          <div class="modal-body h-100" id="post-image">
+
+          </div>
+        </div>
+        <div class="modal-port w-25 position-relative">
+          <div class="port-container overflow-auto pt-3 px-2">
+            <div class="container-contents d-flex flex-column">
+              <div
+                class="contents-header d-flex gap-3 align-items-center justify-content-between pt-2 pb-2 px-1 pe-1"
+              >
+                <div class="header-img">
+                  <img src="avatar/{{userViewed.avatar}}" alt="" />
+                </div>
+                <div class="header-name d-flex flex-column">
+                  <span><strong>{{userViewed.fullname}}</strong></span>
+                  <span
+                    class="fst-italic fw-lighter"
+                  >@{{userViewed.username}}</span>
+                </div>
+                <div
+                  class="header-setting hover-icon"
+                  data-bs-toggle="dropdown"
+                  aria-expanded="false"
+                >
+                  <i class="fa-solid fa-ellipsis"></i>
+                </div>
+                <ul class="dropdown-menu">
+                  {{#if (notEq user.username userViewed.username)}}
+                    <li
+                      class="d-flex align-items-center px-2 hover-icon"
+                      id="report-post"
+                      data-bs-toggle="modal"
+                      data-bs-target="#modalReason"
+                    >
+                      <i class="fa-solid fa-circle-exclamation px-2"></i>
+                      <span class="dropdown-item px-0 report-post">Report</span>
+                    </li>
+                  {{else}}
+                    <li
+                      class="d-flex align-items-center px-2 hover-icon btn-delete"
+                      id="delete-post"
+                    >
+                      <i class="fa-regular fa-trash-can px-2"></i>
+                      <span
+                        class="dropdown-item px-0"
+                        style="padding-left: 2px !important;"
+                      >Delete</span>
+                    </li>
+                  {{/if}}
+                </ul>
+              </div>
+              <div class="contents-body mb-3">
+                <!--  -->
+              </div>
+              <div
+                class="contents-footer pt-1 pb-1 d-flex justify-content-between gap-2 mb-4"
+              >
+                <div
+                  class="d-flex justify-content-center align-items-center gap-3 pt-2 pb-2 btn-like"
+                >
+                  <i class="fa-solid fa-heart"></i>
+                  <span>Awesome</span>
+                </div>
+                <div
+                  class="d-flex justify-content-center align-items-center gap-3 pt-2 pb-2"
+                >
+                  <i class="fa-solid fa-message"></i>
+                  Comments
+                </div>
+              </div>
+              <div class="contents-comments">
+                <!--  -->
+              </div>
+            </div>
+          </div>
+          <div class="input-comment position-absolute bottom-0 w-100">
+            <div class="pt-2 pb-2 px-3 d-flex justify-content-between gap-2">
+              <input
+                type="text"
+                class="form-control input-comments"
+                placeholder="New comments..."
+              />
+              <button type="button" class="btn btn-primary px-3 btn-comment">
+                <i class="fa-regular fa-comment-dots"></i>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
